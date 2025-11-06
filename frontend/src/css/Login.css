@@ -78,14 +78,6 @@
   
  
 }
-.toggle-button {
-  background-color: bisque;
-  border: none;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  padding: 3px 8px;
-  align-self: flex-end;
-}
 
 .switch-txt{
   margin-top: 1rem;

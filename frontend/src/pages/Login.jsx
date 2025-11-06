@@ -7,7 +7,6 @@ import { useState } from "react"
 
 function Login(){
 
-    const [showPassword, setShowPassword] = useState(false);
 
     const [isLogin, setIsLogin] = useState(true);
 
@@ -52,18 +51,10 @@ function Login(){
                     <div className="form-group">
                         <div className="password-field">
                             <label htmlFor="password" className="form-label">Password</label>
-                            <input type={showPassword ? "text" : "password"} 
+                            <input type="password" 
                                 placeholder="******" {...register("password")}
-                                className="form-input"/>
-                            
-{/*
-                            <button
-                                type="button" 
-                                onClick={() => {
-                                    setShowPassword(!showPassword)
-                                }} className="toggle-button"> {showPassword ? "Hide" : "Show"} 
-                            </button>
-*/}
+                                className="form-input"
+                            />
                         </div>
                         <p className="error">{errors.password?.message}</p>
                         
@@ -73,7 +64,8 @@ function Login(){
                     {!isLogin && (
                         <div className="form-group">
                             <label htmlFor="confirmPassword" className="form-label">Confirm password</label>
-                            <input type={showPassword ? "text" : "password"} placeholder="******"
+                            <input type="password" 
+                                placeholder="******"
                                 {...register("confirmPassword")}
                                 className="form-input"/>
                             <p className="error">{errors.confirmPassword?.message}</p>
@@ -90,7 +82,6 @@ function Login(){
                     {isLogin ? "Don't have an account?": "Already have an account?"}
                     <button onClick={()=> {
                         setIsLogin(!isLogin);
-                        setShowPassword(false);
                         reset();
                     }} className="switch-btn">
                         {isLogin ? "Register": "Login"}
