@@ -36,43 +36,69 @@ function Login(){
 
     return (
         <div className="login">
-            <h2>{isLogin ? "Login" : "Register"}</h2>
-            
-            <form onSubmit={handleSubmit(onSubmit)}> 
-                <input type="text" placeholder="Email..." {...register("email")}/>
-                <p>{errors.email?.message}</p>
-                <input type={showPassword ? "text" : "password"} 
-                    placeholder="Password.." {...register("password")}/>
-                <button onClick={() => {
-                        setShowPassword(!showPassword)
-                    }} className="toggle-button"> {showPassword ? "Hide" : "Show"} 
-                    </button>
-                <p>{errors.password?.message}</p>
+            <h1>{isLogin ? "Welcome Back!" : "Welcome!"}</h1>
+            <div className="login-container">
+                <h2>{isLogin ? "Login" : "Register"}</h2>
                 
+                <form onSubmit={handleSubmit(onSubmit)} className="login-form">
+                    <div className="form-group">
+                        <label htmlFor="email" className="form-label">Email</label>
+                        <input type="text" placeholder="ex@hotmail.com" {...register("email")}
+                            className="form-input"/>
+                        <p className="error">{errors.email?.message}</p>
 
-                {!isLogin && (
-                    <div>
-                        <input type={showPassword ? "text" : "password"} placeholder="Confirm password"
-                            {...register("confirmPassword")}/>
-                        <p>{errors.confirmPassword?.message}</p>
                     </div>
-                )}
 
-                <input type="submit" />
-            </form>
+                    <div className="form-group">
+                        <div className="password-field">
+                            <label htmlFor="password" className="form-label">Password</label>
+                            <input type={showPassword ? "text" : "password"} 
+                                placeholder="******" {...register("password")}
+                                className="form-input"/>
+                            
+{/*
+                            <button
+                                type="button" 
+                                onClick={() => {
+                                    setShowPassword(!showPassword)
+                                }} className="toggle-button"> {showPassword ? "Hide" : "Show"} 
+                            </button>
+*/}
+                        </div>
+                        <p className="error">{errors.password?.message}</p>
+                        
+                    </div>
+                    
 
-            <p>
-                {isLogin ? "Don't have an account?": "Already registered?"}
-                <button onClick={()=> {
-                    setIsLogin(!isLogin);
-                    reset();
-                }}>
-                    {isLogin ? "Register": "Login"}
+                    {!isLogin && (
+                        <div className="form-group">
+                            <label htmlFor="confirmPassword" className="form-label">Confirm password</label>
+                            <input type={showPassword ? "text" : "password"} placeholder="******"
+                                {...register("confirmPassword")}
+                                className="form-input"/>
+                            <p className="error">{errors.confirmPassword?.message}</p>
+                        </div>
+                    )}
+                     
+                    <button type="submit" className="submit-btn">
+                        {isLogin ? "Login":"Register"}
+                    </button>
+                    
+                </form>
 
-                </button>
-            </p>
+                <p className="switch-txt">
+                    {isLogin ? "Don't have an account?": "Already have an account?"}
+                    <button onClick={()=> {
+                        setIsLogin(!isLogin);
+                        setShowPassword(false);
+                        reset();
+                    }} className="switch-btn">
+                        {isLogin ? "Register": "Login"}
 
+                    </button>
+                </p>
 
+            </div>
         </div>
     );
 }
