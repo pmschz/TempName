@@ -11,6 +11,7 @@ function NavBar({handleChange, isChecked}) {
                 <div className="navbar-links">
                     <Link to ="/about" className="nav-link">About Us</Link>
                     <Link to ="/calendar" className="nav-link">Calendar</Link>
+                    <Link to ="/fileviewer" className="nav-link">Files</Link>
                     <Link to ="/login" className="nav-link">
                         <button className="button">
                             Log In
